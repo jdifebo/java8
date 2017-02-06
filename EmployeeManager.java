@@ -184,7 +184,7 @@ public class EmployeeManager {
 
 	/**
 	 * Returns a comma separated list of the different offices.
-	 * To pass the unit test, be sure to separate with a commana and a space such as ", "
+	 * To pass the unit test, be sure to separate with a comma and a space such as ", "
 	 * 
 	 * @return a String, formatted as a comma separated list of offices
 	 */
@@ -221,7 +221,7 @@ public class EmployeeManager {
 	}
 
 	/**
-	 * Finds the top paid employees at a given office, in osrted order
+	 * Finds the top paid employees at a given office, in sorted order
 	 *
 	 * @param office to filter by
 	 * @param limit the number of employees to find
