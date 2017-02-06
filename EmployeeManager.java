@@ -1,7 +1,4 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -16,13 +13,29 @@ public class EmployeeManager {
 	public EmployeeManager(List<Employee> employees){
 		this.employees = employees;
 	}
+
+	/**
+	 * Sorts the given list of employees by the employees' names.
+	 *
+	 * @param employees to sort
+	 */
+	public static void sortEmployeesByName(List<Employee> employees){
+//		employees.sort(new Comparator<Employee>() {
+//			@Override
+//			public int compare(Employee e1, Employee e2) {
+//				return e1.getName().compareTo(e2.getName());
+//			}
+//		});
+//		employees.sort((e1, e2) -> e1.getName().compareTo(e2.getName()));
+
+	}
 	
 	/**
 	 * An example of using anyMatch()
 	 * Returns true if any employee's office matches the given office.
 	 * 
-	 * @param office
-	 * @return
+	 * @param office to match
+	 * @return true if there's a match
 	 */
 	public boolean existsEmployeeAtOffice(String office){
 //		for (Employee employee : employees){
@@ -31,33 +44,33 @@ public class EmployeeManager {
 //			}
 //		}
 //		return false;
-		return employees.stream()
-						.anyMatch(employee -> employee.getOffice().equals(office));
+
+		return false;
 	}
 
 	/**
 	 * An example of using allMatch()
 	 * Returns true if all employees' salaries are greater than the given salary.
 	 * 
-	 * @param salary
-	 * @return
+	 * @param salary to compare against
+	 * @return true if all employees' salaries are higher than it
 	 */
-	public boolean allSalariesGreaterThan(int salary){
+	public boolean areAllSalariesGreaterThan(int salary){
 //		for (Employee employee : employees){
 //			if (!(employee.getSalary() > salary)){
 //				return false;
 //			}
 //		}
 //		return true;
-		return employees.stream()
-						.allMatch(employee -> employee.getSalary() > salary);
+
+		return false;
 	}
-	
+
 	/**
 	 * An example of using max()
 	 * Returns the maximum employee given a comparator function, in this case comparing salary
-	 * 
-	 * @return
+	 *
+	 * @return the employee with the highest salary, or an empty optional
 	 */
 	public Optional<Employee> findHighestSalary(){
 //		if (employees.isEmpty()){
@@ -71,76 +84,130 @@ public class EmployeeManager {
 //			}
 //		}
 //		return Optional.of(maxEmployee);
-		return employees.stream()
-						.max((e1, e2) -> Integer.compare(e1.getSalary(), e2.getSalary()));
+
+		return null;
+	}
+
+
+	/**
+	 * An example of using max()
+	 * Returns the maximum employee given a comparator function, in this case comparing salary,
+	 * and returns either that employee's name or the String "No employees were found!"
+	 *
+	 * @return the name of the employee with the highest salary, or else "No employees were found!"
+	 */
+	public String findNameOfHighestSalary(){
+//		if (employees.isEmpty()){
+//			return "No employees were found!";
+//		}
+//
+//		Employee maxEmployee = employees.get(0);
+//		for (Employee currentEmployee : employees){
+//			if (currentEmployee.getSalary() > maxEmployee.getSalary()){
+//				maxEmployee = currentEmployee;
+//			}
+//		}
+//		return maxEmployee.getName();
+
+		return null;
 	}
 	
 	/**
 	 * An example using map() and collect()
-	 * First maps a Stream<Employee> to a Stream<String> by reading each employee's name,
-	 * then creates a new list from the elements of the new Stream<String> and returns that.
+	 * Generates a new list containing the names of all employees
 	 * 
-	 * @return
+	 * @return the list of employees' names
 	 */
-	public List<String> extractEmployeeNames(){
+	public List<String> findEmployeeNames(){
 //		List<String> names = new ArrayList<String>(employees.size());
 //		for (Employee employee : employees){
 //			names.add(employee.getName());
 //		}
 //		return names;
-		return employees.stream()
-						.map(employee -> employee.getName())
-						.collect(Collectors.toList());
+
+		return null;
 	}
 
 	/**
 	 * An example of filter() and count()
-	 * First filters the Stream to create a new Stream containing only the elements that
-	 * match the given condition, and then counts the number of elements in the new stream
+	 * Calculates the number of employees at a given office
 	 * 
-	 * @param office
-	 * @return
+	 * @param office to filter by
+	 * @return the number of employees at that office
 	 */
 	public long countEmployeesAtOffice(String office) {
-//		int count = 0;
+//		long count = 0;
 //		for (Employee employee : employees){
 //			if (employee.getOffice().equals(office)){
 //				count++;
 //			}
 //		}
 //		return count;
-		return employees.stream()
-						.filter(employee -> employee.getOffice().equals(office))
-						.count();
+
+		return 0;
 	}
 
 	/**
-	 * An example of map(), distinct(), and collect()
-	 * First maps the Stream<Employee> to a Stream<String> containing the employees' offices,
-	 * then removes duplicate entries using distinct, and finally creates a list of the result.
-	 * 
-	 * @return
+	 * An example of map(), collect(), and filter()
+	 * Generates a list of employees' names that all belong to a given office
+	 *
+	 * @param office to filter by
+	 * @return the list of employees' names
 	 */
-	public Set<String> extractDistinctOffices() {
+	public List<String> findEmployeeNamesAtOffice(String office) {
+//		List<String> names = new ArrayList<>();
+//		for (Employee employee : employees){
+//			if (employee.getOffice().equals(office)){
+//				names.add(employee.getName());
+//			}
+//		}
+//		return names;
+
+		return null;
+	}
+
+	/**
+	 * An example of distinct() and count()
+	 * Counts the number of different offices there are among all employees
+	 *
+	 * @return the number of distinct offices
+	 */
+	public long countNumberOfOffices() {
 //		Set<String> offices = new HashSet<String>();
 //		for (Employee employee : employees){
 //			offices.add(employee.getOffice());
 //		}
-//		return offices;
-		return employees.stream()
-						.map(employee -> employee.getOffice())
-						.distinct()
-						.collect(Collectors.toSet());
+//		return offices.size();
+
+		return 0;
+	}
+
+	/**
+	 * Returns a comma separated list of the different offices.
+	 * To pass the unit test, be sure to separate with a commana and a space such as ", "
+	 * 
+	 * @return a String, formatted as a comma separated list of offices
+	 */
+	public String findDistinctOffices() {
+//		Set<String> offices = new HashSet<String>();
+//		for (Employee employee : employees){
+//			offices.add(employee.getOffice());
+//		}
+//
+//		StringBuilder commaSeparated = new StringBuilder();
+//		for (String office : offices){
+//			commaSeparated.append(office + ", ");
+//		}
+//		return commaSeparated.substring(0, commaSeparated.length()-2);
+
+		return null;
 	}
 	
 	/**
-	 * An example of filter() and findAny()
-	 * First filters by a given office, and then uses findAny() to return an employee
-	 * from that office.  This is not guaranteed to return the first employee from that 
-	 * office, if you need that, use findFirst()
+	 * Finds any employee at the given office
 	 * 
-	 * @param office
-	 * @return
+	 * @param office to filter by
+	 * @return an Optional of that employee, if one exists
 	 */
 	public Optional<Employee> findAnyEmployeeAtOffice(String office){
 //		for (Employee employee : employees){
@@ -149,88 +216,60 @@ public class EmployeeManager {
 //			}
 //		}
 //		return Optional.empty();
-		return employees.stream()
-						.filter(employee -> employee.getOffice().equals(office))
-						.findAny();
+
+		return null;
 	}
 
 	/**
-	 * An example of sorted() and collect()
-	 * Sorts the stream using a given comparator function, then puts the results
-	 * in a new list
-	 * 
-	 * @return
+	 * Finds the top paid employees at a given office, in osrted order
+	 *
+	 * @param office to filter by
+	 * @param limit the number of employees to find
+	 * @return a list of the employees
 	 */
-	public List<Employee> sortedByHighestSalary() {
-//		List<Employee> copy = new ArrayList<Employee>(employees);
-//		copy.sort(new Comparator<Employee>(){
+	public List<Employee> topSalaryAtOffice(String office, int limit) {
+//		List<Employee> employeesAtOffice = new ArrayList<>();
+//		for (Employee employee : employees){
+//			if (employee.getOffice().equals(office)){
+//				employeesAtOffice.add(employee);
+//			}
+//		}
+//		employeesAtOffice.sort(new Comparator<Employee>(){
 //			@Override
 //			public int compare(Employee e1, Employee e2) {
 //				return Integer.compare(e2.getSalary(), e1.getSalary());
 //			}
 //		});
-//		return copy;
-		return employees.stream()
-						.sorted((e1, e2) -> Integer.compare(e2.getSalary(), e1.getSalary()))
-						.collect(Collectors.toList());
+//		return employeesAtOffice.subList(0, limit);
+
+		return null;
 	}
 
 	/**
-	 * An example of sorted(), limit() and collect()
-	 * Sorts the stream using a given comparator function, but then truncates the
-	 * stream to contain only a certain number of elements.  Finally it puts the results
-	 * in a new list
+	 * Finds the average employee salary by using an IntStream
 	 * 
-	 * @param toRetrieve
-	 * @return
+	 * @return the average salary, or 0 if no employees exist
 	 */
-	public List<Employee> topBySalary(int toRetrieve) {
-//		List<Employee> copy = new ArrayList<Employee>(employees);
-//		copy.sort(new Comparator<Employee>(){
-//			@Override
-//			public int compare(Employee e1, Employee e2) {
-//				return Integer.compare(e2.getSalary(), e1.getSalary());
-//			}
-//		});
-//		return copy.subList(0, toRetrieve);
-		return employees.stream()
-						.sorted((e1, e2) -> Integer.compare(e2.getSalary(), e1.getSalary()))
-						.limit(toRetrieve)
-						.collect(Collectors.toList());
-	}
-
-	/**
-	 * An example of mapToInt() and average()
-	 * Uses mapToInt() to get an IntStream, a special stream that is designed to work with 
-	 * primitive int values.  Then uses average() to find the average value.  Note that 
-	 * average() is not available on "normal" streams, but is available to IntStream, 
-	 * LongStream, and DoubleStream
-	 * 
-	 * @return
-	 */
-	public OptionalDouble findAverageSalary() {
+	public double findAverageSalary() {
 //		if (employees.isEmpty()){
-//			return OptionalDouble.empty();
+//			return 0;
 //		}
 //		int total = 0;
 //		for (Employee employee : employees){
 //			total += employee.getSalary();
 //		}
-//		return OptionalDouble.of(((double) total) / employees.size());
-		return employees.stream()
-						.mapToInt(employee -> employee.getSalary())
-						.average();
+//		return ((double) total) / employees.size();
+
+		return 0;
 	}
 
 	/**
-	 * An example of filter(), mapToInt(), and average()
-	 * Very similar to the above example, but uses filter() to only include
-	 * employees from a given office
+	 * Finds the total salary of all employees at a given office
 	 * 
-	 * @param office
-	 * @return
+	 * @param office to filter by
+	 * @return the total salary
 	 */
-	public OptionalDouble findAverageSalaryOfOffice(String office) {
+	public int findTotalSalaryOfOffice(String office) {
 //		int total = 0;
 //		int count = 0;
 //		for (Employee employee : employees){
@@ -243,9 +282,8 @@ public class EmployeeManager {
 //			return OptionalDouble.empty();
 //		}
 //		return OptionalDouble.of(((double) total) / count);
-		return employees.stream()
-						.filter(employee -> employee.getOffice().equals(office))
-						.mapToInt(employee -> employee.getSalary())
-						.average();
+
+		return 0;
 	}
+
 }

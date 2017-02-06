@@ -1,10 +1,8 @@
 # java8
 This repository contains several examples of lambda expressions and the Stream API
 
-There are only 3 classes:
+It has been modified to go along with a powerpoint presentation, also included.
 
- - `Employee.java` - A very simple class that we can test out our streams on.
- - `EmployeeManager.java` - Here's where the Java 8 code is.  There are 12 different methods, each showing an example of one or more stream operations in use.  There is also commented out code to show an equivalent method without streams or lambda expressions.
- - `Main.java` - Contains the main method and tests out each of the methods in `EmployeeManager.java`with simple `println` statements.
-
-Between the 12 methods, various combinations of the following operations are used: `anymatch`, `allmatch`, `max`, `map`, `collect`, `filter`, `count`, `distinct`, `findAny`, `sorted`, `limit`, `mapToInt`, and `average`.  Peek inside to have a look!
+The goal is to implement each of the methods in EmployeeManager using Java 8 features.  Each one can be implemented
+in a single line, typically be returning a single expression.  Also, commented out non-java-8 implementations are
+provided; some of those implementations are quite verbose!
