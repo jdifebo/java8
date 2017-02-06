@@ -26,7 +26,6 @@ public class EmployeeManager {
 //				return e1.getName().compareTo(e2.getName());
 //			}
 //		});
-//		employees.sort((e1, e2) -> e1.getName().compareTo(e2.getName()));
 
 	}
 	
